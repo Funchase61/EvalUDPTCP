@@ -37,6 +37,33 @@ Create our work environment, it should look like this :
 
 ![First step exemple](https://i.imgur.com/erDbxTN.png)
 
+So as we can see each one of our anchors are there with their servers and routers, name them properly to have a better insight of what you're doing.
+
+Now what do we do with this ? time to allocate ips to our subnets
+
+Allocate a static ip to our Servers, it will always be 192.168.x.10 , in x will be change by our subnet numbers as TECH will be 1.10 , Marketing will be 2.10 and Admin will be 3.10
+
+To do it you'll need to proceed like that in each server :
+
+![exemple of allocating](https://i.imgur.com/9mxRtBE.png)
+
+As you can see we're adding our ip, our subnet 255.255.255.0 ( /24 ) and our Gateway.
+
+The gateway is basicaly the ip of one of our net interface on our router, its needed for our subnet to interact to another subnet via our router ( which is doing his job of routing our packets ). And that's what we will configurate now.
+
+Now let's configure our routers, we need to configure each net interface of them. One being the gateway of our subnets and the other being the one needed for them to communicate with each other :
+
+1. First interface
+
+![exemple of router](https://i.imgur.com/sGEEkno.png)
+
+2. Second interface
+
+![exemple of router](https://imgur.com/WIVQYv6.png)
+
+You need to do that for each one of them where you replace 192.168.x.1 / 10.0.0.x , x by the number of others subnets.
+
+
 
 
 
