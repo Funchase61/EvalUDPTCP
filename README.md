@@ -17,6 +17,32 @@ TLDR : you'll need to download Cisco Packet Tracer to do this exercices, and som
 
 ## Manipulations list
 
+### First exercice : creating our local network with working routing
+
+So it's time to introduce ourselves to Cisco Packet Tracer ! Download it and open it.
+
+When it's done, now we need to create our "simulation" of what is our network in our facility, so for that we'll need to install equipments. In our case we'll need to have 3 computer , 3 servers , 1 switch , 3 routers.
+
+For Context : Our Facility have 3 anchors ( admin, technical, marketing ) each one have his own sub-network :
+
+- Technical : 192.168.1.0/24
+- Marketing : 192.168.2.0/24
+- Admin : 192.168.3.0/24
+
+each one have his own router and server to permits routing and Ip distribution by DHCP
+
+### 1. First step : 
+
+Create our work environment, it should look like this : 
+
+[![An old rock in the desert](/assets/images/shiprock.jpg "Shiprock, New Mexico by Beau Rogers")](https://www.flickr.com/photos/beaurogers/31833779864/in/photolist-Qv3rFw-34mt9F-a9Cmfy-5Ha3Zi-9msKdv-o3hgjr-hWpUte-4WMsJ1-KUQ8N-deshUb-vssBD-6CQci6-8AFCiD-zsJWT-nNfsgB-dPDwZJ-bn9JGn-5HtSXY-6CUhAL-a4UTXB-ugPum-KUPSo-fBLNm-6CUmpy-4WMsc9-8a7D3T-83KJev-6CQ2bK-nNusHJ-a78rQH-nw3NvT-7aq2qf-8wwBso-3nNceh-ugSKP-4mh4kh-bbeeqH-a7biME-q3PtTf-brFpgb-cg38zw-bXMZc-nJPELD-f58Lmo-bXMYG-bz8AAi-bxNtNT-bXMYi-bXMY6-bXMYv)
+
+
+
+
+
+
+
 
 ## Problems encountered and solutions
 
