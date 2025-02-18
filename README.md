@@ -35,7 +35,7 @@ each one have his own router and server to permits routing and Ip distribution b
 
 Create our work environment, it should look like this : 
 
-![First step exemple](https://imgur.com/erDbxTN)
+![First step exemple](https://i.imgur.com/erDbxTN.png)
 
 
 
