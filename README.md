@@ -142,6 +142,7 @@ we see that packets coming back from the clients we did ping so our network is c
 It's enough for our first exercice. it showed you how to create a simple network and make communication via routes
 
 
+
 ## Problems encountered and solutions
 
 ## Theorical analysis
