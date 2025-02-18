@@ -1,22 +1,21 @@
 # Evaluation TCP/IP
-
+___________________
 ## Table of contents
-
+_______________________
 - [Introduction](#Introduction)
 - [Manipulations list](#Manipulations-list)
 - [Problems encountered and solutions](#Problems-encountered-and-solutions)
 - [Theorical analysis](#Theorical-analysis)
 - [Conclusion](#Conclusion)
-- [Resources](#Resources)
 
 ## Introduction
-
+_____________________________
 <p>Welcome, everyone! Today, we're going to dive into a set of exercises focused on fundamental networking protocols: TCP/IP, UDP, and ARP requests. These protocols play a crucial role in communication across networks, from ensuring reliable data transmission to handling address resolution. Through these exercises, you'll gain a better understanding of how they function, their differences, and their practical applications. Let's get started! 
   
 TLDR : you'll need to download Cisco Packet Tracer to do this exercices, and some VMs on Windows server iso</p>
 
 ## Manipulations list
-
+_________________________________
 ### First exercice : creating our local network with working routing
 
 So it's time to introduce ourselves to Cisco Packet Tracer ! Download it and open it.
@@ -208,18 +207,109 @@ We see that it worked just fine by showing us the simulated website of our serve
 
 Now for Udp let's use a traffic generator on our client : 
 
+Prepare the packet and where it shall be sent by fill the parameters correctly ( see the exemple ) then send it and simulate ( with the right filter Udp here ) :
+
 ![image](https://github.com/user-attachments/assets/13c2761e-0894-4357-95aa-deec05e5879f)
 
+![image](https://github.com/user-attachments/assets/277b7878-c2a7-4b8a-a828-bb1ff4ed551a)
 
+We see that it worked just fine like the tcp packet but here it takes 0.006 sec to go to the server and return back.
 
+It means that an udp packet is 200 Times faster than a tcp packet
 
+Now why shall we use one or another :
 
+Choosing between TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) depends on the requirements of the application and the type of data being transmitted.
+
+If data accuracy and reliability matter → Use TCP.
+
+If speed and low latency are more important → Use UDP.
+
+### Last exercice : ICMP and ARP
+
+Deeper understanding on what is really ICMP and ARP, because at first we're using a lot the command `ping` but what is it really ? well it's literally a request ICMP 
+
+So we were technically already using this kind of request to test connection between server/client, a ping can tell you a lot of thing important. like if there is a problem in your network installation. if a ping can't return back there is a problem.
+
+Let's a see an exemple of what is happening when a ping can't return back : 
+
+![image](https://github.com/user-attachments/assets/608ad2ea-1b61-4385-94a1-06c16c0c577e)
+
+Here we can see that the packet sent is lost. it indicates us that there is no receiver found.
+
+So maybe a problem in our network ;)
+
+Now we can try to see if we can solve this problem with the request ARP, a request arp is made for searching an user with the correct ID so here an adress MAC
+
+Why do we need this ? well it is used to be sure that the packet u send isn't sent to everyone and create an exception to who shall accept that packet.
+
+By using the command `arp -a` we can see if the ip aimed got an adress MAC :
+
+![image](https://github.com/user-attachments/assets/d60478a8-fde1-4bbc-b65d-990566daf773)
+
+It seems that it isn't recognised as a Mac adress detainer.
+
+So basicly the server don't exist ( it was made on purpose cause we didn't create any server with that ip on that simulation of TCP/UDP )
 
 
 ## Problems encountered and solutions
+_________________________________
+If you follow the exercices word by word normaly there isn't any problem, some problem would have occured with VMs but we didn't use it here.
 
 ## Theorical analysis
+_________________________________
+### 1. Importance of TCP/IP Protocols in Modern Networks
+
+The TCP/IP (Transmission Control Protocol / Internet Protocol) model is the foundation of communication on the internet and private networks. Its importance lies in several key aspects:
+
+    - Network Interconnection: Enables devices to communicate regardless of their architecture or operating system.
+    
+    - Standardization: Universally used, ensuring interoperability between different hardware and software systems.
+    
+    - Modularity: Composed of multiple layers (Application, Transport, Internet, Network Access) that allow for efficient and adaptable data transmission.
+    
+    - Scalability: Supports small local networks as well as global-scale communications
+
+### 2. Advantages of Different Protocols (TCP vs. UDP)
+
+|Feature	|TCP (Transmission Control Protocol)|UDP (User Datagram Protocol)|
+|---------|------------------------------------|---------------------------|
+|Connection|Connection-oriented (3-way handshake)|Connectionless|
+|Reliability|	Ensures data delivery (error checking, retransmission)|No guarantee of delivery|
+|Speed	|Slower due to overhead	|Faster due to minimal processing|
+|Ordering	|Maintains packet order|	No sequence control|
+|Use Cases	|Web browsing (HTTP/HTTPS), file transfer (FTP), email (SMTP, IMAP, POP3)|	Streaming, gaming, VoIP, DNS, IoT applications|
+
+TCP is ideal when data integrity and reliability are crucial, whereas UDP is preferred for speed and low latency applications.
+
+### 3. Observations Using Wireshark and Simulators
+
+Wireshark, a network packet analyzer, allows us to observe and analyze network traffic in real-time. Some key observations include:
+
+    - TCP Handshake: When initiating a connection, TCP uses a three-way handshake (SYN → SYN-ACK → ACK). This ensures a stable connection before data transmission begins.
+    
+    - Retransmissions: If a TCP segment is lost, Wireshark captures retransmission attempts, confirming TCP’s reliability.
+    
+    - UDP Simplicity: UDP packets are visible as independent datagrams without acknowledgment, illustrating its connectionless nature.
+    
+    - ARP Requests: Wireshark can capture ARP requests and responses, showing how MAC addresses are resolved from IP addresses in local networks.
+    
+    - Packet Loss in UDP: When using UDP-based applications (e.g., video streaming), dropped packets may appear without retransmission, highlighting its trade-off between speed and reliability.
+
+Using network simulators (e.g., Cisco Packet Tracer, GNS3), we can recreate network scenarios to test protocol behavior under different conditions.
 
 ## Conclusion
+___________________________________
+The TCP/IP suite remains the backbone of modern networking, enabling reliable and scalable communication. TCP ensures data integrity for critical applications, while UDP provides fast and efficient transmission for real-time services. Tools like Wireshark and network simulators help visualize and understand how these protocols function in real-world scenarios.
 
-## Resources
+
+
+
+#QUIZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
+_______________________________________________
+
+1. A
+2. C
+3. C
+4. C
+5. B
